@@ -22,6 +22,7 @@ export class SecurityActions {
     return (dispatch) => {
       Fetcher.fetch(url, object)
       .then((response)=>{
+        console.log('response', response);
         dispatch(response);
       })
       .catch((e)=>{
@@ -81,6 +82,7 @@ export class SecurityActions {
 
   logout() {
     return (dispatch) => {
+      console.log("dispatch inside logout", dispatch);
       dispatch();
     }
   }

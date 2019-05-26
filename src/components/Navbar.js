@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Link } from 'react-router';
 import {API} from '../config/endpoints';
 import SecurityActions from '../actions/SecurityActions';
+import SecurityStore from '../stores/SecurityStore';
 import Cookies from 'universal-cookie';
 import '../css/Main.css';
 
@@ -12,16 +13,29 @@ export default class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      me: null,
       username: "",
       password: "",
     }
 
+    this.onChange = this.onChange.bind(this);
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleUserChange = this.handleUserChange.bind(this);
   }
 
   componentWillMount() {
+    SecurityStore.listen(this.onChange);
 
+    // var user = cookies.get('user')
+    // if (user) {
+    //   let obj = {
+    //     username: user.username, 
+    //     password: user.password
+    //   }
+
+    //   SecurityActions.login(API.getLoginURL(), obj)
+    // }
   }
   
   componentDidMount(){
@@ -29,6 +43,14 @@ export default class Navbar extends Component {
   }
 
   componentWillUnmout() {
+
+    SecurityStore.unlisten(this.onChange);
+
+  }
+
+  onChange(state) { //state is referring to SecurityStore.state
+    this.setState({me: state.me})
+    this.handleUserChange()
   }
 
   handleUsernameChange(event){
@@ -39,12 +61,18 @@ export default class Navbar extends Component {
     this.setState({password: event.target.value})
   }
 
+  handleUserChange () {
+    this.props.onLogout(this.state.me);            
+  }
+
   login() {
 
     let obj = {
       username: this.state.username, 
       password: this.state.password
     }
+
+    console.log('user obj', obj);
 
     SecurityActions.login(API.getLoginURL(), obj)
 
@@ -56,15 +84,16 @@ export default class Navbar extends Component {
 
   logout() {
     SecurityActions.logout();
+
   }
 
   render() {
     let content = null;
 
-    if (this.props.user) {
+    if (this.state.me) {
       content = (
         <div style={styles.buttonContainer}>
-          <span>{this.props.user.username}</span>
+          <span>{this.state.me.username}</span>
           <button style={styles.logoutButton} onClick={() => this.logout()}>Log out</button>
         </div>
       )
@@ -78,7 +107,7 @@ export default class Navbar extends Component {
                 Login
             </button>
           </div>
-          <Link className='link' style={styles.logoutButton} to="/signup">Sign Up</Link>
+          <button className='link' style={styles.logoutButton} to="/signup">Sign Up</button>
         </div>
       )
     }

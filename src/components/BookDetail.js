@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import BooksActions from '../actions/BooksActions';
 import BooksStore from '../stores/BooksStore';
+// import SecurityStore from '../stores/SecurityStore';
 import {API} from '../config/endpoints';
 import Comment from './Comment';
+import Navbar from './Navbar';
 
 export default class BookDetail extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
     	comments: []
     }
@@ -21,7 +23,9 @@ export default class BookDetail extends Component {
 
   componentWillMount() {
   	let index = BooksStore.state.books.map(function(item){return item._id}).indexOf(this.props.location.query.id);
+    console.log('index', index);
   	this.book = BooksStore.state.books[index]
+    console.log('mounting book', this.book)
 
   	BooksStore.listen(this.onChange);
   }
@@ -53,7 +57,9 @@ export default class BookDetail extends Component {
   }
 
   render() {
+    console.log('user in book detail', this.props);
   	let comments = [];
+    console.log('books', this.book)
 
     this.state.comments.map((comment, index) => {
       let commentElement = (
@@ -65,12 +71,23 @@ export default class BookDetail extends Component {
   	
     return (
     	<div>
-    		<p>{this.book.title}</p>
-    		<p>{this.book.author}</p>
-    		<p>{this.book.description}</p>
+          <Navbar />
+          <p>{this.book.title}</p>
+          <p>{this.book.author}</p>
+          <p>{this.book.description}</p>
     		{comments}
     	</div>
     );
   }
 
+}
+
+const styles = {
+  book: {
+    display: 'flex',
+    flexDirection: 'column',
+    border: '1px solid black',
+    justifyContent: 'center'
+
+  }
 }

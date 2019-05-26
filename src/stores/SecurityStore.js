@@ -42,6 +42,7 @@ export class SecurityStore {
   }
 
   handleLogout() {
+    console.log('loging out');
     this.me = null;
     cookies.remove('user');
   }  

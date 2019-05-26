@@ -19,6 +19,7 @@ export default class BookRow extends Component {
 
   componentWillMount() {
     SecurityStore.listen(this.onChange)
+    console.log('booksRow monunting', SecurityStore.state.me)
 
     let favourited = false
 
@@ -45,9 +46,8 @@ export default class BookRow extends Component {
 
   onChange(state) {
     let favourited = false
-
-    if (state.me.favouriteBooks && state.me.favouriteBooks.length > 0) {
-      state.me.favouriteBooks.map((book) => {
+    if (SecurityStore.state.me.favouriteBooks && SecurityStore.state.me.favouriteBooks.length > 0) {
+      SecurityStore.state.me.favouriteBooks.map((book) => {
         if (book == this.props.book._id) {
           favourited = true
           return
@@ -59,6 +59,7 @@ export default class BookRow extends Component {
   }
 
   favourite = (e) => {
+    console.log('clicking', e);
     e.stopPropagation(); //stops propagating the click event to the button parent
     SecurityActions.updateMe(API.getMeURL(SecurityStore.state.me._id), this.props.book._id)
   }
