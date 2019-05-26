@@ -70,17 +70,15 @@ export default class Navbar extends Component {
       )
     }else{
       content = (
-        <div style={styles.buttonContainer}>
-          <div id='inputs'>
-            <input autoComplete="new-username" type="text" placeholder="username" required value={this.state.username} onChange={this.handleUsernameChange}/>
-            <input autoComplete="new-password" type="password" placeholder="password" required value={this.state.password} onChange={this.handlePasswordChange}/>
-            <button className='loginButton' onClick={() => this.login()}>
-                <img src={require("../images/login-arrow.png")} id='arrow'/>
+        <div style={styles.buttonContainerRow}>
+          <div style={styles.inputContainer}>
+            <input style={styles.input} autoComplete="new-username" type="text" placeholder="username" required value={this.state.username} onChange={this.handleUsernameChange}/>
+            <input style={styles.input} autoComplete="new-password" type="password" placeholder="password" required value={this.state.password} onChange={this.handlePasswordChange}/>
+            <button className='link' style={styles.loginButton} onClick={() => this.login()}>
+                Login
             </button>
           </div>
-          <div id='buttons'>
-            <Link className='signupButton' to="/signup">Sign Up</Link>
-          </div>
+          <Link className='link' style={styles.logoutButton} to="/signup">Sign Up</Link>
         </div>
       )
     }
@@ -114,11 +112,35 @@ const styles = {
     alignItems: 'flex-end',
     justifyContent: 'center',
   },
+  buttonContainerRow:{
+    marginRight: 20,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+  },
+  inputContainer:{
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  input: {
+    width: 150,
+    color: '#000',
+    border: 0
+  },
   logoutButton: {
     color: 'black', 
     border: 'none',
     fontSize: 14,
     padding: 0
+  },
+  loginButton: {
+    color: 'black', 
+    border: 'none',
+    fontSize: 14,
+    outline: 'none',
   },
 }
 
