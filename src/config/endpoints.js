@@ -30,6 +30,10 @@ function parseURL(url, params) {
 
 export const API = {
 
+	getMeURL: (id) => {
+		return parseURL('/me/'+id);
+	},
+
 	getLoginURL: () => {
 		return parseURL('/authenticate');
 	},

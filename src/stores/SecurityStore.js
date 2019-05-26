@@ -15,6 +15,7 @@ export class SecurityStore {
     this.bindListeners({
       handleLogin: SecurityActions.LOGIN,
       handleSignup: SecurityActions.SIGNUP,
+      handleUpdateMe: SecurityActions.UPDATE_ME,
       handleLogout: SecurityActions.LOGOUT,
     });
   }
@@ -31,6 +32,12 @@ export class SecurityStore {
       browserHistory.push('/')
       this.me = response.user;
       cookies.set('user', {username: this.me.username, password: this.me.password}, { path: '/' });
+    }
+  }
+
+  handleUpdateMe(response) {
+    if (response.success) {
+      this.me = response.user;
     }
   }
 

@@ -56,6 +56,29 @@ export class SecurityActions {
     }
   }
 
+  updateMe(url, favouriteBook) {
+    let object = {  
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        favouriteBook: favouriteBook
+      })
+    }
+
+    return (dispatch) => {
+      Fetcher.fetch(url, object)
+      .then((response)=>{
+        dispatch(response);
+      })
+      .catch((e)=>{
+        console.log('Response Error', e);
+      });
+    }
+  }
+
   logout() {
     return (dispatch) => {
       dispatch();
