@@ -63,31 +63,31 @@ export default class Navbar extends Component {
 
     if (this.props.user) {
       content = (
-        <div id='buttons'>
+        <div style={styles.buttonContainer}>
           <span>{this.props.user.username}</span>
-          <button className='signupButtonLogged' onClick={() => this.logout()}>logout</button>
+          <button style={styles.logoutButton} onClick={() => this.logout()}>Log out</button>
         </div>
       )
     }else{
       content = (
-        <div>
+        <div style={styles.buttonContainer}>
           <div id='inputs'>
-            <input autoComplete="new-password" autoComplete="new-password" className='mainInput' type="text" placeholder="username" required value={this.state.username} onChange={this.handleUsernameChange}/>
-            <input autoComplete="new-password" autoComplete="new-password" type="password" className='mainInput' placeholder="password" required value={this.state.password} onChange={this.handlePasswordChange}/>
+            <input autoComplete="new-username" type="text" placeholder="username" required value={this.state.username} onChange={this.handleUsernameChange}/>
+            <input autoComplete="new-password" type="password" placeholder="password" required value={this.state.password} onChange={this.handlePasswordChange}/>
             <button className='loginButton' onClick={() => this.login()}>
                 <img src={require("../images/login-arrow.png")} id='arrow'/>
             </button>
           </div>
           <div id='buttons'>
-            <Link className='signupButton' to="/signup">signup</Link>
+            <Link className='signupButton' to="/signup">Sign Up</Link>
           </div>
         </div>
       )
     }
 
     return(
-        <div style={styles.navigator}>
-          <span id="title">Book vote</span>
+        <div id='navigator' style={styles.container}>
+          <span style={styles.title}>Book vote</span>
           {content}
         </div>
     )    
@@ -97,11 +97,28 @@ export default class Navbar extends Component {
 const styles = {
   container: {
     width: "100%",
-    height: 70,
+    height: 50,
     display: "flex",
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-  }
+  },
+  title: {
+    fontSize: 30,
+    marginLeft: 20,
+  },
+  buttonContainer:{
+    marginRight: 20,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+  },
+  logoutButton: {
+    color: 'black', 
+    border: 'none',
+    fontSize: 14,
+    padding: 0
+  },
 }
 

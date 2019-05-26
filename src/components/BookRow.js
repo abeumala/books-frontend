@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import SecurityStore from '../stores/SecurityStore';
 import SecurityActions from '../actions/SecurityActions';
 import {API} from '../config/endpoints';
+import { browserHistory } from 'react-router';
 
 export default class BookRow extends Component {
 
@@ -57,8 +58,13 @@ export default class BookRow extends Component {
     this.setState({favourited: favourited})
   }
 
-  favourite = () => {
+  favourite = (e) => {
+    e.stopPropagation(); //stops propagating the click event to the button parent
     SecurityActions.updateMe(API.getMeURL(SecurityStore.state.me._id), this.props.book._id)
+  }
+
+  goToBook = () => {
+    browserHistory.push('/book?id='+this.props.book._id)
   }
 
   render() {
@@ -70,46 +76,46 @@ export default class BookRow extends Component {
     }
 
     return (
-      <div className="bookLink" style={styles.container} /*to={SecurityStore.state.me ? "/book?id="+this.props.book.id : "/signup"}*/>
+      <button onClick={this.goToBook} className="boxShadow link" style={styles.container} /*to={SecurityStore.state.me ? "/book?id="+this.props.book.id : "/signup"}*/>
         <img src={require("../images/" + this.props.book.coverUrl)} style={styles.image}/>
         <div style={styles.cover}/>
-        <div style={styles.headerContainer}>
+        <div style={styles.headerContainer} className="noLink">
           <div style={styles.textContainer}>
             <span style={styles.title}>{this.props.book.title}</span>
             <span style={styles.author}>{this.props.book.author}</span>
           </div>
-          <button onClick={this.favourite} style={styles.favouriteButton}>
+          <button onClick={this.favourite} className="link" style={styles.favouriteButton}>
             <img src={imageUrl} style={{width: 20, height: 20}}/>
           </button>
         </div>
-    	</div>
+    	</button>
     );
   }
 }
 
 const styles = {
   container: {
-    marginLeft: 20,
+    marginBottom: 20,
     display: 'flex',
     flexDirection: 'column',
     height: 200,
     width: 300,
     backgroundColor: 'lightgray',
-    marginTop: 20,
     background: "#fff",
     borderRadius: 2,
+    padding: 0,
   },
   image: {
     width: 300,
-    height: 150,
+    height: 200,
     objectFit: 'none',
   },
   cover: {
     position: 'absolute',
     width: 300,
-    height: 150,
+    height: 200,
     backgroundColor: "#000",
-    opacity: 0.5,
+    opacity: 0.3,
   },
   headerContainer:{
     position: 'absolute',
@@ -117,7 +123,7 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: 50,
+    height: 55,
     width: 300,
     backgroundColor: "rgba(0,0,0,0.5)",
   },
@@ -127,17 +133,18 @@ const styles = {
   },
   title: {
     marginLeft: 5,
+    fontSize: 14,
     marginTop: 5,
     color: '#FFF'
   },
   author: {
     marginLeft: 5,
     marginTop: 5,
-    color: '#FFF'
+    fontSize: 12,
+    color: 'rgb(220,220,220)',
+    fontFamily: 'Roboto-Italic'
   },
   buttonContainer:{
-    // position: 'absolute',
-    // backgroundColor: "rgba(0,0,0,0.5)",
     display: 'flex',
     width: 300,
     height: 50,
