@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import '../css/Main.css';
 import BooksActions from '../actions/BooksActions';
 import BooksStore from '../stores/BooksStore';
+// import SecurityActions from '../actions/SecurityActions';
+// import SecurityStore from '../stores/SecurityStore';
 import { Link } from 'react-router'
 import {API} from '../config/endpoints';
 import { browserHistory } from 'react-router';
@@ -41,7 +43,7 @@ export default class Main extends Component {
 
   handleLogout (userValue) {
     this.setState({ me: userValue })
-    console.log(this.state.me);
+    console.log('inside handleLogout', this.state.me);
   }
 
   render() {

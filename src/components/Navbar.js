@@ -50,7 +50,6 @@ export default class Navbar extends Component {
 
   onChange(state) { //state is referring to SecurityStore.state
     this.setState({me: state.me})
-    this.handleUserChange()
   }
 
   handleUsernameChange(event){
@@ -62,7 +61,9 @@ export default class Navbar extends Component {
   }
 
   handleUserChange () {
-    this.props.onLogout(this.state.me);            
+    SecurityActions.logout()
+    console.log('handleUserChange', this.state.me);
+    this.props.onLogout(this.state.me);         
   }
 
   login() {
@@ -82,11 +83,6 @@ export default class Navbar extends Component {
     })
   }
 
-  logout() {
-    SecurityActions.logout();
-
-  }
-
   render() {
     let content = null;
 
@@ -94,7 +90,7 @@ export default class Navbar extends Component {
       content = (
         <div style={styles.buttonContainer}>
           <span>{this.state.me.username}</span>
-          <button style={styles.logoutButton} onClick={() => this.logout()}>Log out</button>
+          <button style={styles.logoutButton} onClick={() => this.handleUserChange()}>Log out</button>
         </div>
       )
     }else{
