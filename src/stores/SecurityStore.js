@@ -9,7 +9,6 @@ export class SecurityStore {
 
   constructor() {
 
-    // this.token = null;
     this.me = null;
 
     this.bindListeners({
@@ -42,7 +41,6 @@ export class SecurityStore {
   }
 
   handleLogout() {
-    console.log('loging out');
     this.me = null;
     cookies.remove('user');
   }  

@@ -3,6 +3,9 @@ import '../css/Signup.css';
 import { browserHistory } from 'react-router';
 import SecurityActions from '../actions/SecurityActions';
 import SecurityStore from '../stores/SecurityStore';
+import BooksActions from '../actions/BooksActions';
+import BooksStore from '../stores/BooksStore';
+import Navbar from './Navbar';
 import { Link } from 'react-router';
 import {API} from '../config/endpoints';
 
@@ -18,7 +21,7 @@ export default class Signup extends Component {
       password: ''
     }
 
-    this.signup = this.signup.bind(this);
+    this.updateProfile = this.updateProfile.bind(this);
 
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -26,6 +29,7 @@ export default class Signup extends Component {
   }
 
   componentWillMount() {
+
   }
   
   componentDidMount(){
@@ -50,9 +54,9 @@ export default class Signup extends Component {
     this.setState({password: event.target.value})
   }
 
-  signup = (e) => {
+  updateProfile = (e) => {
 
-    e.preventDefault()
+    e.preventDefault
 
     let obj = {
       username: this.state.username,
@@ -63,18 +67,14 @@ export default class Signup extends Component {
     SecurityActions.signup(API.getRegisterURL(), obj)
   }
 
-  goBackToMain = (e) => {
-    e.preventDefault()
-    browserHistory.push('/')
-  }
-
 
   render() {
     return (
       <div id="container">
+        <Navbar />
         <div id="form-container">
           <div id="title-container">
-          <h3>SIGN UP</h3>
+          <h3>PROFILE</h3>
           </div>
           <div className="field-container">
             <input autoComplete="new-password" autoComplete="new-password" type="text" placeholder="Enter username" required value={this.state.username} onChange={this.handleUsernameChange}/>
@@ -86,16 +86,24 @@ export default class Signup extends Component {
             <input autoComplete="new-password" autoComplete="new-password" type="text" placeholder="Enter email" required value={this.state.email} onChange={this.handleEmailChange}/>
           </div>  
           <div id="button-container">
-          <button id="loginButton" to="/" onClick={this.signup}>CREATE ACCOUNT</button>
-          </div>
-          <div id="button-container">
-          <button id="loginButton" to="/" onClick={this.goBackToMain}>BACK</button>
+          <button id="loginButton" to="/" onClick={this.update}>UPDATE ACCOUNT</button>
           </div>
         </div>
       </div>
     );
   }
 }
+
+// const styles = {
+//   profileContainer: {
+//     display: 'flex',
+//     flexDirection: 'column',
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     width: 100%,
+//     height: 68vh
+//   }
+// }
 
 
 

@@ -2,6 +2,7 @@
 
 import alt from '../alt';
 import { Fetcher } from '../utils/Fetcher';
+import Utils from '../utils/Utils';
 
 export class SecurityActions {
 
@@ -32,8 +33,7 @@ export class SecurityActions {
   }
 
   signup(url, obj) {
-    console.log('inside security actions URL', url)
-    console.log('inside security actions OBJ', obj)
+    
     let object = {  
       method: 'POST',
       headers: {
@@ -67,6 +67,32 @@ export class SecurityActions {
       },
       body: JSON.stringify({
         favouriteBook: favouriteBook
+      })
+    }
+
+    return (dispatch) => {
+      Fetcher.fetch(url, object)
+      .then((response)=>{
+        dispatch(response);
+      })
+      .catch((e)=>{
+        console.log('Response Error', e);
+      });
+    }
+  }
+
+  updateProfile(url, obj) {
+    
+    let object = {  
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: obj.username,
+        email: obj.email,
+        password: obj.password,
       })
     }
 

@@ -3,17 +3,15 @@ import { Link } from 'react-router';
 import {API} from '../config/endpoints';
 import SecurityActions from '../actions/SecurityActions';
 import SecurityStore from '../stores/SecurityStore';
-import Cookies from 'universal-cookie';
+import { browserHistory } from 'react-router';
 import '../css/Main.css';
-
-const cookies = new Cookies();
 
 export default class Navbar extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      me: null,
+      me: SecurityStore.state.me,
       username: "",
       password: "",
     }
@@ -21,21 +19,10 @@ export default class Navbar extends Component {
     this.onChange = this.onChange.bind(this);
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.handleUserChange = this.handleUserChange.bind(this);
   }
 
   componentWillMount() {
     SecurityStore.listen(this.onChange);
-
-    // var user = cookies.get('user')
-    // if (user) {
-    //   let obj = {
-    //     username: user.username, 
-    //     password: user.password
-    //   }
-
-    //   SecurityActions.login(API.getLoginURL(), obj)
-    // }
   }
   
   componentDidMount(){
@@ -43,9 +30,7 @@ export default class Navbar extends Component {
   }
 
   componentWillUnmout() {
-
     SecurityStore.unlisten(this.onChange);
-
   }
 
   onChange(state) { //state is referring to SecurityStore.state
@@ -60,10 +45,11 @@ export default class Navbar extends Component {
     this.setState({password: event.target.value})
   }
 
-  handleUserChange () {
+  logout () {
+
     SecurityActions.logout()
-    console.log('handleUserChange', this.state.me);
-    this.props.onLogout(this.state.me);         
+    browserHistory.push('/')   
+
   }
 
   login() {
@@ -73,8 +59,6 @@ export default class Navbar extends Component {
       password: this.state.password
     }
 
-    console.log('user obj', obj);
-
     SecurityActions.login(API.getLoginURL(), obj)
 
     this.setState({
@@ -83,14 +67,24 @@ export default class Navbar extends Component {
     })
   }
 
+  backToMain = (e) => {
+    e.preventDefault()
+    browserHistory.push('/')
+  }
+
+  goToProfile = (e) => {
+    e.preventDefault()
+    browserHistory.push('/profile')
+  }
+
   render() {
     let content = null;
 
     if (this.state.me) {
       content = (
         <div style={styles.buttonContainer}>
-          <span>{this.state.me.username}</span>
-          <button style={styles.logoutButton} onClick={() => this.handleUserChange()}>Log out</button>
+          <button onClick={this.goToProfile} style={styles.loginButton}><span>{this.state.me.username}</span></button>
+          <button style={styles.logoutButton} onClick={() => this.logout()}>Log out</button>
         </div>
       )
     }else{
@@ -110,7 +104,7 @@ export default class Navbar extends Component {
 
     return(
         <div id='navigator' style={styles.container}>
-          <span style={styles.title}>Book vote</span>
+          <button style={styles.loginButton} onClick={this.backToMain}><span style={styles.title}>Book vote</span></button>
           {content}
         </div>
     )    
