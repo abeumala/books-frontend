@@ -32,7 +32,8 @@ export class SecurityActions {
   }
 
   signup(url, obj) {
-
+    console.log('inside security actions URL', url)
+    console.log('inside security actions OBJ', obj)
     let object = {  
       method: 'POST',
       headers: {

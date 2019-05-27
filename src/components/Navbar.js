@@ -102,8 +102,8 @@ export default class Navbar extends Component {
             <button className='link' style={styles.loginButton} onClick={() => this.login()}>
                 Login
             </button>
+            <Link className='link' style={styles.loginButton} to="/signup">Sign Up</Link>
           </div>
-          <button className='link' style={styles.logoutButton} to="/signup">Sign Up</button>
         </div>
       )
     }
@@ -166,6 +166,7 @@ const styles = {
     border: 'none',
     fontSize: 14,
     outline: 'none',
+    textDecoration: 'none'
   },
 }
 
