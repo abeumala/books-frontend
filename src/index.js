@@ -9,8 +9,10 @@ import Profile from './components/Profile';
 render((
   	<Router history={browserHistory}>
 		<Route path="/" component={Main} />
-		<Route path="/profile" component={Profile}/>
 		<Route path="/signup" component={Signup}/>
 		<Route path="/book" component={BookDetail}/>
+		<Route path="/profile" component={Profile}/>
 	</Router>
 ),document.getElementById('root'))
+
+

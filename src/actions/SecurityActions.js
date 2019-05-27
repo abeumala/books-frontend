@@ -33,7 +33,7 @@ export class SecurityActions {
   }
 
   signup(url, obj) {
-    
+    console.log('obj', obj);
     let object = {  
       method: 'POST',
       headers: {
@@ -59,6 +59,7 @@ export class SecurityActions {
   }
 
   updateMe(url, favouriteBook) {
+    console.log('favouriteBook', favouriteBook)
     let object = {  
       method: 'PUT',
       headers: {
@@ -82,7 +83,7 @@ export class SecurityActions {
   }
 
   updateProfile(url, obj) {
-    
+    console.log('updateProfile obj:', obj)
     let object = {  
       method: 'PUT',
       headers: {
@@ -92,7 +93,7 @@ export class SecurityActions {
       body: JSON.stringify({
         username: obj.username,
         email: obj.email,
-        password: obj.password,
+        password: obj.password
       })
     }
 

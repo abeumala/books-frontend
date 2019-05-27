@@ -34,6 +34,10 @@ export const API = {
 		return parseURL('/me/'+id);
 	},
 
+	getProfileURL: (id) => {
+		return parseURL('/profile/'+id)
+	},
+
 	getLoginURL: () => {
 		return parseURL('/authenticate');
 	},

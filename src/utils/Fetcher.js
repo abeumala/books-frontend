@@ -11,9 +11,6 @@ export const Fetcher = {
       }
     }
 
-    console.log(object);
-    console.log(url);
-
     return fetch(url, object)
       .then( (response) => {
       	if (response.status==401 || response.status==403) {

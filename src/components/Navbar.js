@@ -22,11 +22,11 @@ export default class Navbar extends Component {
   }
 
   componentWillMount() {
-    SecurityStore.listen(this.onChange);
+    
   }
   
   componentDidMount(){
-    
+    SecurityStore.listen(this.onChange);
   }
 
   componentWillUnmout() {

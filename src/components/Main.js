@@ -22,7 +22,6 @@ export default class Main extends Component {
       books: []
     }
 
-   
     this.onBooksStoreChange = this.onBooksStoreChange.bind(this);
     
   }

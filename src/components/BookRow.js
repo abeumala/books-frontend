@@ -10,16 +10,33 @@ export default class BookRow extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      favourited: false
+      favourited: false,
     }
 
     this.favourite = this.favourite.bind(this)
     this.onChange = this.onChange.bind(this)
   }
 
+  // loadData() {
+  //   var promise = new Promise((resolve, reject) => { 
+  //     setTimeout(() => {
+  //       resolve('This is my data.');
+  //     }, 3000);
+  //   });
+
+  //   console.log('This happens 4th.');
+
+  //   return promise;
+  // }
+
   componentWillMount() {
     SecurityStore.listen(this.onChange)
+    // console.log('security store state', SecurityStore.state.me)
+    
 
+  }
+  
+  componentDidMount(){
     let favourited = false
     
     if (SecurityStore.state.me && SecurityStore.state.me.favouriteBooks && SecurityStore.state.me.favouriteBooks.length > 0) {
@@ -30,13 +47,8 @@ export default class BookRow extends Component {
         }
       })
     }
-    
+    console.log('security store state1', SecurityStore.state.me)
     this.setState({favourited: favourited})
-
-  }
-  
-  componentDidMount(){
-    
   }
 
   componentWillUnmout() {
@@ -59,7 +71,6 @@ export default class BookRow extends Component {
 
   favourite = (e) => {
     e.stopPropagation(); //stops propagating the click event to the button parent
-
 
     if (SecurityStore.state.me) SecurityActions.updateMe(API.getMeURL(SecurityStore.state.me._id), this.props.book._id)
     else browserHistory.push('/signup')

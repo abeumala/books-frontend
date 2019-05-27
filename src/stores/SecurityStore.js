@@ -16,6 +16,7 @@ export class SecurityStore {
       handleSignup: SecurityActions.SIGNUP,
       handleUpdateMe: SecurityActions.UPDATE_ME,
       handleLogout: SecurityActions.LOGOUT,
+      handleUpdateProfile: SecurityActions.UPDATE_PROFILE
     });
   }
 
@@ -35,8 +36,17 @@ export class SecurityStore {
   }
 
   handleUpdateMe(response) {
+    console.log('handleUpdateMe response', response.user)
     if (response.success) {
       this.me = response.user;
+    }
+  }
+
+  handleUpdateProfile(response) {
+    console.log('handleUpdateProfile response', response.user)
+    if (response.success) {
+      this.me = response.user;
+      cookies.set('user', {username: this.me.username, password: this.me.password}, { path: '/' });
     }
   }
 

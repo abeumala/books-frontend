@@ -13,14 +13,16 @@ import {API} from '../config/endpoints';
 
 export default class Signup extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       username: '',
       email: '',
       password: ''
     }
 
+    // console.log('props in profile', props)
+    console.log('SecurityStore user', SecurityStore.state.me._id)
     this.updateProfile = this.updateProfile.bind(this);
 
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
@@ -56,7 +58,7 @@ export default class Signup extends Component {
 
   updateProfile = (e) => {
 
-    e.preventDefault
+    e.preventDefault()
 
     let obj = {
       username: this.state.username,
@@ -64,7 +66,8 @@ export default class Signup extends Component {
       password: this.state.password,
     }
     
-    SecurityActions.signup(API.getRegisterURL(), obj)
+    if (SecurityStore.state.me) SecurityActions.updateProfile(API.getProfileURL(SecurityStore.state.me._id), obj)
+    else browserHistory.push('/signup')
   }
 
 
@@ -86,7 +89,7 @@ export default class Signup extends Component {
             <input autoComplete="new-password" autoComplete="new-password" type="text" placeholder="Enter email" required value={this.state.email} onChange={this.handleEmailChange}/>
           </div>  
           <div id="button-container">
-          <button id="loginButton" to="/" onClick={this.update}>UPDATE ACCOUNT</button>
+          <button id="loginButton" to="/" onClick={this.updateProfile}>UPDATE ACCOUNT</button>
           </div>
         </div>
       </div>
