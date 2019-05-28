@@ -59,7 +59,7 @@ export class SecurityActions {
   }
 
   updateMe(url, favouriteBook) {
-    console.log('favouriteBook', favouriteBook)
+
     let object = {  
       method: 'PUT',
       headers: {
@@ -113,6 +113,26 @@ export class SecurityActions {
       console.log("dispatch inside logout", dispatch);
       dispatch();
     }
+  }
+
+  deleteUser(url) {
+    let object = {  
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    } 
+    return (dispatch) => {
+      Fetcher.fetch(url, object)
+      .then((response)=>{
+        console.log("IN DELETE FETCH", response)
+        dispatch(response);
+      })
+      .catch((e)=>{
+        console.log('Response Error', e);
+      });
+    } 
   }
 
 }

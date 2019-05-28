@@ -5,9 +5,7 @@ export const Fetcher = {
     if (object == null) {
       object = {  
         method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
+        headers: { 'Content-Type': 'application/json'}
       }
     }
 
@@ -16,8 +14,9 @@ export const Fetcher = {
       	if (response.status==401 || response.status==403) {
           return response;
       	}
-        return response.json(); })
-        .then( (json) => {
+        return response.json(); 
+      })
+       .then( (json) => {
           console.log(json)
         	return json;
         });

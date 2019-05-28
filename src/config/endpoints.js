@@ -58,6 +58,10 @@ export const API = {
 		}	
 	},
 
+	getDeleteUSer: (id) => {
+		return parseURL('/delete')
+	},
+
 	getNewCommentURL : () => {
 		return parseURL('/comments')
 	}

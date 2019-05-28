@@ -16,14 +16,20 @@ export default class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // me: SecurityStore.state.me._id
+      // comments: BooksStore.state.comments_id	
       username: '',
       email: '',
       password: ''
+
     }
 
-    // console.log('props in profile', props)
-    console.log('SecurityStore user', SecurityStore.state.me._id)
+    // console.log('me', SecurityStore.state.me._id)
+    // console.log('comments', BooksStore.state.comments.user_id)
+    // this.comments = []
+
     this.updateProfile = this.updateProfile.bind(this);
+    this.deleteUser = this.deleteUser.bind(this);
 
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -66,9 +72,17 @@ export default class Signup extends Component {
       password: this.state.password,
     }
     
-    if (SecurityStore.state.me) SecurityActions.updateProfile(API.getProfileURL(SecurityStore.state.me._id), obj)
+    if (SecurityStore.state.me) {
+    	SecurityActions.updateProfile(API.getProfileURL(SecurityStore.state.me._id), obj)
+    }	
     else browserHistory.push('/signup')
   }
+	
+	deleteUser = () => {
+		console.log('DELETEEEEEEEE', SecurityStore.state.me)
+		if (SecurityStore.state.me) SecurityActions.deleteUser(API.getDeleteUSer(SecurityStore.state.me._id))
+			browserHistory.push('/')
+	}
 
 
   render() {
@@ -87,9 +101,11 @@ export default class Signup extends Component {
           </div>
           <div className="field-container" id="bottom-div">
             <input autoComplete="new-password" autoComplete="new-password" type="text" placeholder="Enter email" required value={this.state.email} onChange={this.handleEmailChange}/>
-          </div>  
+          </div>
+
           <div id="button-container">
           <button id="loginButton" to="/" onClick={this.updateProfile}>UPDATE ACCOUNT</button>
+          <button id="loginButton" to="/" onClick={this.deleteUser}>DELETE USER</button>
           </div>
         </div>
       </div>

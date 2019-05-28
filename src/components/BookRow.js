@@ -47,7 +47,7 @@ export default class BookRow extends Component {
         }
       })
     }
-    console.log('security store state1', SecurityStore.state.me)
+    // console.log('security store state1', SecurityStore.state.me)
     this.setState({favourited: favourited})
   }
 

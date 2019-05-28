@@ -16,7 +16,8 @@ export class SecurityStore {
       handleSignup: SecurityActions.SIGNUP,
       handleUpdateMe: SecurityActions.UPDATE_ME,
       handleLogout: SecurityActions.LOGOUT,
-      handleUpdateProfile: SecurityActions.UPDATE_PROFILE
+      handleUpdateProfile: SecurityActions.UPDATE_PROFILE,
+      handleDeleteUser: SecurityActions.DELETE_USER
     });
   }
 
@@ -51,6 +52,12 @@ export class SecurityStore {
   }
 
   handleLogout() {
+    this.me = null;
+    cookies.remove('user');
+  }
+
+  handleDeleteUser() {
+    console.log('insideDelete Store')
     this.me = null;
     cookies.remove('user');
   }  
