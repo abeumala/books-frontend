@@ -62,11 +62,12 @@ export default class BookDetail extends Component {
 
   handleTitleChange = (event) => {
     this.setState({title: event.target.value})
+    this.mainInput.value = "";
   }
 
   handleCommentChange = (event) => {
     this.setState({comment: event.target.value})
-    console.log('handleCommentChange', this.state.comment)
+    // console.log('handleCommentChange', this.state.comment)
   }
 
   addComment = (e) => {
@@ -79,6 +80,11 @@ export default class BookDetail extends Component {
       title: this.state.title,
       comment: this.state.comment
     }
+
+    this.setState({
+      title: "",
+      comment: ""
+    })
     
     BooksActions.addComment(API.getNewCommentURL(), obj)
   }
@@ -108,7 +114,7 @@ export default class BookDetail extends Component {
         <div style={styles.inputContainer}>
           <label> Add a comment </label>
           <input style={styles.input} type="text" placeholder="Title" required value={this.state.title} onChange={this.handleTitleChange}/>
-          <input style={styles.input} type="text" placeholder="Leave yout comment" required value={this.state.comment} onChange={this.handleCommentChange}/>
+          <input style={styles.input}  type="text" placeholder="Leave yout comment" required value={this.state.comment} onChange={this.handleCommentChange}/>
           <button className='link' style={styles.loginButton} onClick={this.addComment}>
               Send
           </button>
