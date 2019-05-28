@@ -8,7 +8,7 @@ export default class Comment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+     
     }
   }
 
@@ -26,8 +26,8 @@ export default class Comment extends Component {
 
   render() {
   	return(
-  		<div className="comment">
-  			<div>
+  		<div style={styles.commentContainer}>
+  			<div style={styles.singleCommentContainer}>
         	<p>{this.props.comment.title}</p>  
         	<p>{this.props.comment.content}</p>  
         </div>
@@ -39,9 +39,20 @@ export default class Comment extends Component {
 					  VOTE DOWN
 					</button>  
         </div>
-        <span>{this.props.comment.voteUp - this.props.comment.voteDown}</span>
+        <span>{this.props.comment.voteUp - this.props.comment.voteDown}</span>   
       </div>
   	)
   }
 
+}
+
+const styles = {
+  commentContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  singleCommentContainer: {
+    border: "1px solid black"
+  }
 }

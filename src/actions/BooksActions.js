@@ -59,6 +59,33 @@ export class BooksActions {
     }
   }
 
+  addComment(url, obj) {
+    let object = {  
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title: obj.title,
+        content: obj.comment,
+        user: obj.user,
+        book: obj.book
+
+      })
+    }
+
+    return (dispatch) => {
+      Fetcher.fetch(url, object)
+      .then((response)=>{
+        dispatch(response);
+      })
+      .catch((e)=>{
+        console.log('Response Error', e);
+      });
+    }
+  }
+
 }
 
 export default alt.createActions(BooksActions);

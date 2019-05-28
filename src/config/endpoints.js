@@ -55,7 +55,10 @@ export const API = {
 			return parseURL('/comments/'+id);
 		}else{
 			return parseURL('/comments', params);	
-		}
-		
+		}	
+	},
+
+	getNewCommentURL : () => {
+		return parseURL('/comments')
 	}
 }

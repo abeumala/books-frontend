@@ -14,7 +14,8 @@ export class BooksStore {
     	handleGetBooks: BooksActions.GET_BOOKS,
     	handleGetOne: BooksActions.GET_ONE,
     	handleGetCommentsForBook: BooksActions.GET_COMMENTS_FOR_BOOK, // "_" indicates there is camelCase in the BooksActions methods
-    	handleUpdateComment: BooksActions.UPDATE_COMMENT
+    	handleUpdateComment: BooksActions.UPDATE_COMMENT,
+      handleCreateComment: BooksActions.ADD_COMMENT
     });
   }
 
@@ -22,6 +23,12 @@ export class BooksStore {
   	if (response.success) {
   		this.books = response.books;
   	}
+  }
+
+  handleCreateComment(response) {
+    if (response.success) {
+      this.comments.push(response.comment)
+    }
   }
 
   handleGetOne(id) {
@@ -41,6 +48,7 @@ export class BooksStore {
   		this.comments[index] = response.comment
   	}
   }
+
 }
 
 export default alt.createStore(BooksStore, 'BooksStore');
