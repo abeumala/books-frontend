@@ -162,10 +162,10 @@ const styles = {
     justifyContent: 'center',
   },
   input: {
-    width: 100,
-    height: 16,
+    width: 120,
+    height: 18,
     marginRight: 20,
-    borderRadius: 3
+    borderRadius: `4px`
   },
   logoutButton: {
     border: 'none',
@@ -179,3 +179,5 @@ const styles = {
     textDecoration: 'none'
   }
 }
+
+

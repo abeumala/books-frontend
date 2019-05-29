@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './../css/Main.css';
 import { browserHistory } from 'react-router';
 import SecurityActions from '../actions/SecurityActions';
 import SecurityStore from '../stores/SecurityStore';
@@ -106,7 +107,7 @@ export default class Signup extends Component {
           </div>
 
           <div style={styles.buttonContainer}>
-          <button style={styles.updateButton} id="loginButton" to="/" onClick={this.updateProfile}>Update Account</button>
+          <button style={styles.updateButton} to="/" onClick={this.updateProfile}>Update Account</button>
           </div>
           <div style={styles.buttonContainer}>
           <button style={styles.deleteButton} id="loginButton" to="/" onClick={this.deleteUser}>Delete Account</button>
@@ -132,7 +133,8 @@ formContainer: {
   padding: 120,
   boxShadow: `0px 19px 38px rgba(0,0,0,0.30), 0px 15px 12px rgba(0,0,0,0.22)`, 
   backgroundColor: "white",
-  marginTop: 80
+  marginTop: 80,
+  borderRadius: `20px`
 },
 
 fieldContainer: {
@@ -154,20 +156,21 @@ titleContainer: {
 inputField: {
   width: 180,
   height: 25,
-  borderRadius: 3
+  borderRadius: `20px`
 },
 
 deleteButton: {
   height: 25,
   width: 150,
-  borderRadius: 3,
-  boxShadow: `2px 2px #888888`
+  color: "white",
+  borderRadius: `20px`,
+  background: `#933131`
 },
 
 updateButton: {
   height: 30,
   width: 190,
-  borderRadius: 5,
+  borderRadius: `20px`,
   "background": `#2a2c39`,
   "color": "white"
   // boxShadow: `2px 2px #888888`
@@ -176,7 +179,7 @@ updateButton: {
   buttonContainer: {
     display: "flex",
     justifyContent: "center",
-    marginBottom: 25
+    marginBottom: 25,
   }
 }
 

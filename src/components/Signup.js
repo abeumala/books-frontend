@@ -148,12 +148,6 @@ const styles = {
     "boxShadow": "none"
   },
 
-inputField: {
-  width: 180,
-  height: 25,
-  borderRadius: 3
-},
-
   deleteButton: {
     height: 25,
     width: 150,

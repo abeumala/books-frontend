@@ -71,7 +71,6 @@ export default class BookRow extends Component {
 
   favourite = (e) => {
     e.stopPropagation(); //stops propagating the click event to the button parent
-    console.log('image', this.props.book.coverUrl);
     if (SecurityStore.state.me) SecurityActions.updateMe(API.getMeURL(SecurityStore.state.me._id), this.props.book._id)
     else browserHistory.push('/signup')
 

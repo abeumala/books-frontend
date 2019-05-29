@@ -25,16 +25,14 @@ export default class BookDetail extends Component {
   }
 
   componentWillMount() {
-   
-  	let index = BooksStore.state.books.map(function(item){return item._id}).indexOf(this.props.location.query.id);
-  	this.book = BooksStore.state.books[index]
 
+    let index = BooksStore.state.books.map(function(item){return item._id}).indexOf(this.props.location.query.id);
+  	this.book = BooksStore.state.books[index]
   	BooksStore.listen(this.onChange);
   }
   
   componentDidMount() {
-    console.log('book ID', this.book._id)
-    console.log('user ID', SecurityStore.state.me._id)
+
   	BooksActions.getCommentsForBook(API.getCommentsURL(null, {bookId: this.props.location.query.id}))
   }
 
@@ -105,11 +103,21 @@ export default class BookDetail extends Component {
     return (
     	<div>
         <Navbar />
-        <div style={styles.bookContainer}>
-          <p>{this.book.title}</p>
-          <p>{this.book.author}</p>
-          <p>{this.book.description}</p>
+        <div style={styles.firstSection} id="book-detail">
+          <img src={require("../images/" + this.book.bookCoverUrl)} style={styles.image}/>
+          <div style={styles.bookContainer}>
+            <div>
+              <h1>{this.book.title}</h1>
+            </div>
+            <div>
+            <h2>{this.book.author}</h2>
+            </div>
+            <div>
+            <p style={styles.bookText}>{this.book.description}</p>
+            </div>
+          </div>
         </div>
+        
     		{comments}
         <div style={styles.inputContainer}>
           <label> Add a comment </label>
@@ -135,14 +143,51 @@ const styles = {
     alignItems: "center",
     flexDirection: "column"
   },
+  
   book: {
     display: 'flex',
     flexDirection: 'column',
     border: '1px solid black',
   },
+
   input: {
     width: 150,
     color: '#000',
     border: '1px solid red'
+  },
+
+  firstSectionContainer: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+
+  firstSection: {
+    width: `100%`,
+    height: `70vh`,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    alignSelf: "center"
+  },
+
+  image: {
+    width: 290,
+    objectFit: 'fit',
+    marginTop: "3vh"
+  },
+
+  bookContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    width: `45%`,
+    marginTop: "3vh"
+  },
+
+  bookText: {
+    lineHeight: 1.9
   }
 }
