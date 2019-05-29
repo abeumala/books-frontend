@@ -91,7 +91,7 @@ export default class Signup extends Component {
         <Navbar />
         <div style={styles.formContainer}>
           <div style={styles.titleContainer}>
-          <h3>Edit Profile</h3>
+          <h1>Edit Profile</h1>
           </div>
           <div style={styles.fieldContainer}>
             <label style={ {color: "black", marginBottom: 5}  }>new username</label>
@@ -107,7 +107,7 @@ export default class Signup extends Component {
           </div>
 
           <div style={styles.buttonContainer}>
-          <button style={styles.updateButton} to="/" onClick={this.updateProfile}>Update Account</button>
+          <button style={styles.updateButton} to="/" onClick={this.updateProfile}>Upade Account</button>
           </div>
           <div style={styles.buttonContainer}>
           <button style={styles.deleteButton} id="loginButton" to="/" onClick={this.deleteUser}>Delete Account</button>
@@ -156,7 +156,8 @@ titleContainer: {
 inputField: {
   width: 180,
   height: 25,
-  borderRadius: `20px`
+  borderRadius: `20px`,
+  letterSpacing: 2.5
 },
 
 deleteButton: {
@@ -164,7 +165,8 @@ deleteButton: {
   width: 150,
   color: "white",
   borderRadius: `20px`,
-  background: `#933131`
+  background: `#933131`,
+  letterSpacing: 2.5
 },
 
 updateButton: {
@@ -172,7 +174,8 @@ updateButton: {
   width: 190,
   borderRadius: `20px`,
   "background": `#2a2c39`,
-  "color": "white"
+  "color": "white",
+  letterSpacing: 2.5
   // boxShadow: `2px 2px #888888`
 },
 

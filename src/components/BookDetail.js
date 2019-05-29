@@ -107,20 +107,19 @@ export default class BookDetail extends Component {
           <img src={require("../images/" + this.book.bookCoverUrl)} style={styles.image}/>
           <div style={styles.bookContainer}>
             <div>
-              <h1>{this.book.title}</h1>
+              <h1 style={styles.bookText}>{this.book.title}</h1>
             </div>
-            <div>
-            <h2>{this.book.author}</h2>
+            <div style={{marginTop: -35}}>
+            <h2 style={styles.bookText}>{this.book.author}</h2>
             </div>
             <div>
             <p style={styles.bookText}>{this.book.description}</p>
             </div>
           </div>
         </div>
-        
     		{comments}
         <div style={styles.inputContainer}>
-          <label> Add a comment </label>
+          <h4> Leave a review </h4>
           <input style={styles.input} type="text" placeholder="Title" required value={this.state.title} onChange={this.handleTitleChange}/>
           <input style={styles.input}  type="text" placeholder="Leave yout comment" required value={this.state.comment} onChange={this.handleCommentChange}/>
           <button className='link' style={styles.loginButton} onClick={this.addComment}>
@@ -183,11 +182,12 @@ const styles = {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    width: `45%`,
+    width: `35%`,
     marginTop: "3vh"
   },
 
   bookText: {
+    textAlign: 'justify',
     lineHeight: 1.9
   }
 }

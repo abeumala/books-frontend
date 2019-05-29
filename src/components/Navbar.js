@@ -119,7 +119,7 @@ export default class Navbar extends Component {
 const styles = {
   container: {
     width: "100%",
-    height: 50,
+    height: 80,
     display: "flex",
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -162,7 +162,7 @@ const styles = {
     justifyContent: 'center',
   },
   input: {
-    width: 120,
+    width: 127,
     height: 18,
     marginRight: 20,
     borderRadius: `4px`

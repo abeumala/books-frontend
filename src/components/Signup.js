@@ -75,7 +75,7 @@ export default class Signup extends Component {
         <Navbar />
         <div style={styles.formContainer}>
           <div style={styles.titleContainer}>
-          <h3>SIGN UP</h3>
+          <h1>Sign up</h1>
           </div>
           <div style={styles.fieldContainer}>
             <input style={styles.inputField} autoComplete="new-password" autoComplete="new-password" type="text" placeholder="Enter username" required value={this.state.username} onChange={this.handleUsernameChange}/>
@@ -87,10 +87,10 @@ export default class Signup extends Component {
             <input  style={styles.inputField} autoComplete="new-password" autoComplete="new-password" type="text" placeholder="Enter email" required value={this.state.email} onChange={this.handleEmailChange}/>
           </div>  
           <div style={styles.buttonContainer}>
-          <button id="loginButton" style={styles.updateButton} to="/" onClick={this.signup}>CREATE ACCOUNT</button>
+          <button id="loginButton" style={styles.updateButton} to="/" onClick={this.signup}>Create Account</button>
           </div>
           <div style={styles.buttonContainer}>
-          <button id="loginButton" style={styles.deleteButton} to="/" onClick={this.goBackToMain}>BACK</button>
+          <button id="loginButton" style={styles.deleteButton} to="/" onClick={this.goBackToMain}>Back</button>
           </div>
         </div>
       </div>
@@ -130,7 +130,7 @@ const styles = {
     flexDirection: "column",
     alignItems: "center",
     width: 240,
-    marginBottom: 25
+    marginBottom: 32
   },
 
   buttonContainer: {
@@ -140,20 +140,29 @@ const styles = {
   },
 
   updateButton: {
-    height: 30,
-    width: 190,
-    borderRadius: 5,
-    "background": `#2a2c39`,
-    "color": "white",
-    "boxShadow": "none"
-  },
+  height: 30,
+  width: 190,
+  borderRadius: `15px`,
+  "background": `#2a2c39`,
+  "color": "white",
+  letterSpacing: 2.5
+},
 
-  deleteButton: {
-    height: 25,
-    width: 150,
-    borderRadius: 3,
-    boxShadow: `2px 2px #888888`
-  }
+deleteButton: {
+  height: 25,
+  width: 150,
+  color: "white",
+  borderRadius: `15px`,
+  background: `#933131`,
+  letterSpacing: 2.5
+},
+
+  inputField: {
+  width: 180,
+  height: 25,
+  borderRadius: `13px`,
+  letterSpacing: 1.7
+},
 }
 
 
