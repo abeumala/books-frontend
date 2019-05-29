@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../css/Signup.css';
 import { browserHistory } from 'react-router';
 import SecurityActions from '../actions/SecurityActions';
 import SecurityStore from '../stores/SecurityStore';
@@ -87,25 +86,30 @@ export default class Signup extends Component {
 
   render() {
     return (
-      <div id="container">
+      <div style={styles.container}>
         <Navbar />
-        <div id="form-container">
-          <div id="title-container">
-          <h3>PROFILE</h3>
+        <div style={styles.formContainer}>
+          <div style={styles.titleContainer}>
+          <h3>Edit Profile</h3>
           </div>
-          <div className="field-container">
-            <input autoComplete="new-password" autoComplete="new-password" type="text" placeholder="Enter username" required value={this.state.username} onChange={this.handleUsernameChange}/>
+          <div style={styles.fieldContainer}>
+            <label style={ {color: "black", marginBottom: 5}  }>new username</label>
+            <input style={styles.inputField} autoComplete="new-password" autoComplete="new-password" type="text" required value={this.state.username} onChange={this.handleUsernameChange}/>
           </div>
-          <div className="field-container">
-            <input autoComplete="new-password" autoComplete="new-password" type="password" placeholder="Enter password" required value={this.state.password} onChange={this.handlePasswordChange}/>
+          <div style={styles.fieldContainer}>
+            <label style={ {color: "black", marginBottom: 5} }>new password</label>
+            <input style={styles.inputField} autoComplete="new-password" autoComplete="new-password" type="password" required value={this.state.password} onChange={this.handlePasswordChange}/>
           </div>
-          <div className="field-container" id="bottom-div">
-            <input autoComplete="new-password" autoComplete="new-password" type="text" placeholder="Enter email" required value={this.state.email} onChange={this.handleEmailChange}/>
+          <div style={styles.fieldContainer}>
+            <label style={ {color: "black", marginBottom: 5} }>new email</label>
+            <input style={styles.inputField} autoComplete="new-password" autoComplete="new-password" type="text" required value={this.state.email} onChange={this.handleEmailChange}/>
           </div>
 
-          <div id="button-container">
-          <button id="loginButton" to="/" onClick={this.updateProfile}>UPDATE ACCOUNT</button>
-          <button id="loginButton" to="/" onClick={this.deleteUser}>DELETE USER</button>
+          <div style={styles.buttonContainer}>
+          <button style={styles.updateButton} id="loginButton" to="/" onClick={this.updateProfile}>Update Account</button>
+          </div>
+          <div style={styles.buttonContainer}>
+          <button style={styles.deleteButton} id="loginButton" to="/" onClick={this.deleteUser}>Delete Account</button>
           </div>
         </div>
       </div>
@@ -113,16 +117,69 @@ export default class Signup extends Component {
   }
 }
 
-// const styles = {
-//   profileContainer: {
-//     display: 'flex',
-//     flexDirection: 'column',
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     width: 100%,
-//     height: 68vh
-//   }
-// }
+
+const styles = {
+  container: {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center"
+},
+
+formContainer: {
+  display: "flex",
+  flexDirection: "column",
+  padding: 120,
+  boxShadow: `0px 19px 38px rgba(0,0,0,0.30), 0px 15px 12px rgba(0,0,0,0.22)`, 
+  backgroundColor: "white",
+  marginTop: 80
+},
+
+fieldContainer: {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  width: 240,
+  marginBottom: 25
+},
+
+titleContainer: {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  marginTop: -90,
+  marginBottom: 25
+},
+
+inputField: {
+  width: 180,
+  height: 25,
+  borderRadius: 3
+},
+
+deleteButton: {
+  height: 25,
+  width: 150,
+  borderRadius: 3,
+  boxShadow: `2px 2px #888888`
+},
+
+updateButton: {
+  height: 30,
+  width: 190,
+  borderRadius: 5,
+  "background": `#2a2c39`,
+  "color": "white"
+  // boxShadow: `2px 2px #888888`
+},
+
+  buttonContainer: {
+    display: "flex",
+    justifyContent: "center",
+    marginBottom: 25
+  }
+}
+
 
 
 

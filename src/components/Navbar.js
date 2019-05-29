@@ -4,7 +4,6 @@ import {API} from '../config/endpoints';
 import SecurityActions from '../actions/SecurityActions';
 import SecurityStore from '../stores/SecurityStore';
 import { browserHistory } from 'react-router';
-import '../css/Main.css';
 
 export default class Navbar extends Component {
 
@@ -82,9 +81,13 @@ export default class Navbar extends Component {
 
     if (this.state.me) {
       content = (
-        <div style={styles.buttonContainer}>
-          <button onClick={this.goToProfile} style={styles.loginButton}><span>{this.state.me.username}</span></button>
-          <button style={styles.logoutButton} onClick={() => this.logout()}>Log out</button>
+        <div style={styles.loggedInContainer}>
+          <div style={styles.userContainer}>
+            <Link onClick={this.goToProfile} style={styles.loginButton}><span style={{color: "white"}}>{this.state.me.username}</span></Link>
+          </div>
+          <div>
+            <Link style={styles.logoutButton} onClick={() => this.logout()}><span style={{color: "white"}}>Log out</span></Link>
+          </div>
         </div>
       )
     }else{
@@ -93,10 +96,12 @@ export default class Navbar extends Component {
           <div style={styles.inputContainer}>
             <input style={styles.input} autoComplete="new-username" type="text" placeholder="username" required value={this.state.username} onChange={this.handleUsernameChange}/>
             <input style={styles.input} autoComplete="new-password" type="password" placeholder="password" required value={this.state.password} onChange={this.handlePasswordChange}/>
-            <button className='link' style={styles.loginButton} onClick={() => this.login()}>
-                Login
-            </button>
-            <Link className='link' style={styles.loginButton} to="/signup">Sign Up</Link>
+            <div style={styles.userContainer}>
+              <Link className='link' style={styles.loginButton} onClick={() => this.login()}><span style={{color: "white"}}>Login</span></Link>
+            </div>
+            <div>  
+              <Link className='link' style={styles.loginButton} to="/signup"><span style={{color: "white"}}>Sign Up</span></Link>
+            </div>
           </div>
         </div>
       )
@@ -104,7 +109,7 @@ export default class Navbar extends Component {
 
     return(
         <div id='navigator' style={styles.container}>
-          <button style={styles.loginButton} onClick={this.backToMain}><span style={styles.title}>Book vote</span></button>
+          <Link style={styles.loginButton} onClick={this.backToMain}><span style={styles.title}>Book vote</span></Link>
           {content}
         </div>
     )    
@@ -119,8 +124,10 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    background: `#2a2c39`
   },
   title: {
+    color: "white",
     fontSize: 30,
     marginLeft: 20,
   },
@@ -128,6 +135,16 @@ const styles = {
     marginRight: 20,
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+  },
+  userContainer: {
+    marginRight: 20
+  },
+  loggedInContainer:{
+    marginRight: 20,
+    display: 'flex',
+    flexDirection: 'row',
     alignItems: 'flex-end',
     justifyContent: 'center',
   },
@@ -145,22 +162,20 @@ const styles = {
     justifyContent: 'center',
   },
   input: {
-    width: 150,
-    color: '#000',
-    border: 0
+    width: 100,
+    height: 16,
+    marginRight: 20,
+    borderRadius: 3
   },
   logoutButton: {
-    color: 'black', 
     border: 'none',
     fontSize: 14,
     padding: 0
   },
   loginButton: {
-    color: 'black', 
     border: 'none',
     fontSize: 14,
     outline: 'none',
     textDecoration: 'none'
-  },
+  }
 }
-

@@ -5,6 +5,8 @@ import Signup from './components/Signup';
 import Main from './components/Main';
 import BookDetail from './components/BookDetail';
 import Profile from './components/Profile';
+import './css/Main.css';
+import './css/Signup.css';
 
 render((
   	<Router history={browserHistory}>

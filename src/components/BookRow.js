@@ -95,15 +95,16 @@ export default class BookRow extends Component {
     return (
       <button onClick={this.goToBook} className="boxShadow link" style={styles.container} /*to={SecurityStore.state.me ? "/book?id="+this.props.book.id : "/signup"}*/>
         <img src={require("../images/" + this.props.book.coverUrl)} style={styles.image}/>
-        <div style={styles.cover}/>
+        <div style={styles.heartContainer}>
+          <button onClick={this.favourite} className="link" style={styles.favouriteButton}>
+            <img src={imageUrl} style={{width: 20, height: 20}}/>
+          </button>
+        </div>
         <div style={styles.headerContainer} className="noLink">
           <div style={styles.textContainer}>
             <span style={styles.title}>{this.props.book.title}</span>
             <span style={styles.author}>{this.props.book.author}</span>
           </div>
-          <button onClick={this.favourite} className="link" style={styles.favouriteButton}>
-            <img src={imageUrl} style={{width: 20, height: 20}}/>
-          </button>
         </div>
     	</button>
     );
@@ -113,8 +114,7 @@ export default class BookRow extends Component {
 const styles = {
   container: {
     marginBottom: 20,
-    display: 'flex',
-    flexDirection: 'column',
+    position: 'relative',
     height: 200,
     width: 300,
     backgroundColor: 'lightgray',
@@ -127,18 +127,17 @@ const styles = {
     height: 200,
     objectFit: 'none',
   },
-  cover: {
+  heartContainer: {
     position: 'absolute',
-    width: 300,
-    height: 200,
-    backgroundColor: "#000",
-    opacity: 0.3,
+    top: 0,
+    right: 0,
+    marginTop: 5
   },
   headerContainer:{
     position: 'absolute',
+    bottom: 0,
     display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     height: 55,
     width: 300,

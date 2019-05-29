@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../css/Main.css';
 import BooksActions from '../actions/BooksActions';
 import BooksStore from '../stores/BooksStore';
 import SecurityActions from '../actions/SecurityActions';
@@ -83,30 +82,33 @@ export default class Main extends Component {
 const styles = {
   columns: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     padding: 50,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: `90%`
   },
   textContainer:{
     display: 'flex',
-    width: 400,
+    width: `80%`,
+    background: `#2a2c39`,
     height: 'fit-content',
     padding: 20,
-    marginRight: 150,
-    flexDirection: 'column'
+    flexDirection: 'column',
+    marginBottom: 60
   },
   title:{
-    color: '#000',
+    color: 'white',
     fontSize: 30,
   },
   description: {
-    color: '#000',
+    color: 'white',
     fontSize: 16,
     marginTop: 30,
   },
   postsColumn: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start'
+    display: 'grid',
+    gridTemplateColumns: 'auto auto auto',
+    gridGap: `10px 25px`
   }
 }
