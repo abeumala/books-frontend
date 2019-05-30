@@ -83,10 +83,10 @@ export default class Navbar extends Component {
       content = (
         <div style={styles.loggedInContainer}>
           <div style={styles.userContainer}>
-            <Link onClick={this.goToProfile} style={styles.loginButton}><span style={{color: "white"}}>{this.state.me.username}</span></Link>
+            <Link onClick={this.goToProfile} style={styles.loginButton}><span style={{color: "white", fontSize: 16}}>{this.state.me.username}</span></Link>
           </div>
           <div>
-            <Link style={styles.logoutButton} onClick={() => this.logout()}><span style={{color: "white"}}>Log out</span></Link>
+            <Link style={styles.logoutButton} onClick={() => this.logout()}><span style={{color: "white", fontSize: 16}}>Log out</span></Link>
           </div>
         </div>
       )
@@ -97,10 +97,10 @@ export default class Navbar extends Component {
             <input style={styles.input} autoComplete="new-username" type="text" placeholder="username" required value={this.state.username} onChange={this.handleUsernameChange}/>
             <input style={styles.input} autoComplete="new-password" type="password" placeholder="password" required value={this.state.password} onChange={this.handlePasswordChange}/>
             <div style={styles.userContainer}>
-              <Link className='link' style={styles.loginButton} onClick={() => this.login()}><span style={{color: "white"}}>Login</span></Link>
+              <Link className='link' style={styles.loginButton} onClick={() => this.login()}><span style={{color: "white", fontSize: 16}}>Login</span></Link>
             </div>
             <div>  
-              <Link className='link' style={styles.loginButton} to="/signup"><span style={{color: "white"}}>Sign Up</span></Link>
+              <Link className='link' style={styles.loginButton} to="/signup"><span style={{color: "white", fontSize: 16}}>Sign Up</span></Link>
             </div>
           </div>
         </div>

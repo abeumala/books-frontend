@@ -96,7 +96,7 @@ export default class BookRow extends Component {
         <img src={require("../images/" + this.props.book.coverUrl)} style={styles.image}/>
         <div style={styles.heartContainer}>
           <button onClick={this.favourite} className="link" style={styles.favouriteButton}>
-            <img src={imageUrl} style={{width: 20, height: 20}}/>
+            <img src={imageUrl} style={{width: 30, height: 30}}/>
           </button>
         </div>
         <div style={styles.headerContainer} className="noLink">
@@ -114,17 +114,17 @@ const styles = {
   container: {
     marginBottom: 20,
     position: 'relative',
-    height: 200,
-    width: 300,
+    height: 350,
+    width: 525,
     backgroundColor: 'lightgray',
     background: "#fff",
     borderRadius: 2,
     padding: 0,
   },
   image: {
-    width: 300,
-    height: 200,
-    objectFit: 'none',
+    width: 525,
+    height: 350,
+    objectFit: 'fit',
   },
   heartContainer: {
     position: 'absolute',
@@ -138,24 +138,24 @@ const styles = {
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    height: 55,
-    width: 300,
-    backgroundColor: "rgba(0,0,0,0.5)",
+    height: 70,
+    width: 525,
+    backgroundColor: "rgba(0,0,0,0.3)",
   },
   textContainer:{
     display: 'flex',
     flexDirection: 'column',
   },
   title: {
-    marginLeft: 5,
-    fontSize: 14,
+    marginLeft: 10,
+    fontSize: 20,
     marginTop: 5,
     color: '#FFF'
   },
   author: {
-    marginLeft: 5,
+    marginLeft: 10,
     marginTop: 5,
-    fontSize: 12,
+    fontSize: 15,
     color: 'rgb(220,220,220)',
     fontFamily: 'Roboto-Italic'
   },

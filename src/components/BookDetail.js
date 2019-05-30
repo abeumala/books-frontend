@@ -118,14 +118,26 @@ export default class BookDetail extends Component {
           </div>
         </div>
     		{comments}
-        <div style={styles.inputContainer}>
-          <h4> Leave a review </h4>
-          <input style={styles.input} type="text" placeholder="Title" required value={this.state.title} onChange={this.handleTitleChange}/>
-          <input style={styles.input}  type="text" placeholder="Leave yout comment" required value={this.state.comment} onChange={this.handleCommentChange}/>
-          <button className='link' style={styles.loginButton} onClick={this.addComment}>
-              Send
-          </button>
-        </div> 
+        <div style={{width: `100%`, display: "flex", alignItems: 'center', justifyContent: "center"}}>
+          <div style={styles.inputContainer}>
+            <h2> Leave a review </h2>
+            <div style={{marginBottom: 25, display: "flex", flexDirection: "column"}}>
+              <h3>Title:</h3>
+              <textarea style={styles.inputTitle} type="text" required value={this.state.title} onChange={this.handleTitleChange}>
+                Title...
+              </textarea>
+            </div>
+            <div style={{marginBottom: 25, display: "flex", flexDirection: "column"}}>
+              <h3>Add a comment:</h3>
+              <textarea style={styles.input}  type="text"  required value={this.state.comment} onChange={this.handleCommentChange}>
+                Enter your comment here...
+              </textarea>  
+            </div>
+            <div style={{marginBottom: 25}}>
+              <button className='link' style={styles.loginButton} onClick={this.addComment}> Send </button>
+            </div>
+          </div> 
+        </div>  
       </div>
 
     );
@@ -150,15 +162,22 @@ const styles = {
   },
 
   input: {
-    width: 150,
+    width: 550,
     color: '#000',
-    border: '1px solid red'
+    height: 150,
+  },
+
+  inputTitle: {
+    width: 550,
+    color: '#000',
+    height: 60
   },
 
   firstSectionContainer: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    padding: 30
   },
 
   firstSection: {
@@ -168,13 +187,15 @@ const styles = {
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",
-    alignSelf: "center"
+    alignSelf: "center",
+    padding: 23
   },
 
   image: {
     width: 290,
     objectFit: 'fit',
-    marginTop: "3vh"
+    marginTop: "3vh",
+    marginBottom: 10
   },
 
   bookContainer: {
@@ -189,5 +210,13 @@ const styles = {
   bookText: {
     textAlign: 'justify',
     lineHeight: 1.9
+  },
+
+  inputContainer: {
+    display: "flex",
+    flexDirection: "column",
+    width: `90%`,
+    alignItems: "center",
+    justifyContent: "center"
   }
 }

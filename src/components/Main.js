@@ -52,6 +52,7 @@ export default class Main extends Component {
 
   render() {
     let books = [];
+    let landingUrl = require('../images/landingPage.jpg')
 
     for (var i = 0; i < this.state.books.length; i++) {
       let book = this.state.books[i]
@@ -65,14 +66,16 @@ export default class Main extends Component {
     return (
       <div className="container">
         <Navbar />
-        <div style={styles.columns}>
           <div className="boxShadowNoHover" style={styles.textContainer}>
-            <span style={styles.title}>Welcome</span>
-            <span style={styles.description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+            <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: 'center', width: `60%`, textAlign: "justify"}}>
+              <span style={styles.title}>Welcome</span>
+              <span style={styles.description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+            </div>  
           </div>
-          <div style={styles.postsColumn}>
-            {books}
-          </div>
+          <div style={styles.columns}>
+            <div style={styles.postsColumn}>
+              {books}
+            </div>
         </div>
       </div>
     );
@@ -90,25 +93,30 @@ const styles = {
   },
   textContainer:{
     display: 'flex',
-    width: `80%`,
-    background: `#2a2c39`,
+    width: `100%`,
+    height: `40vh`,
+    background: `#F1F3DF`,
     height: 'fit-content',
-    padding: 20,
+    padding: 80,
     flexDirection: 'column',
-    marginBottom: 60
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: -30
   },
   title:{
-    color: 'white',
+    color: 'black',
     fontSize: 30,
+    lineHeight: `160%`
   },
   description: {
-    color: 'white',
+    color: 'black',
     fontSize: 16,
     marginTop: 30,
+    lineHeight: `160%`
   },
   postsColumn: {
     display: 'grid',
-    gridTemplateColumns: 'auto auto auto',
-    gridGap: `10px 25px`
+    gridTemplateColumns: 'auto auto',
+    gridGap: `15px 35px`
   }
 }
