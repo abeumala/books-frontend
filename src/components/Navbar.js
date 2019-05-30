@@ -109,7 +109,7 @@ export default class Navbar extends Component {
 
     return(
         <div id='navigator' style={styles.container}>
-          <Link style={styles.loginButton} onClick={this.backToMain}><span style={styles.title}>Book vote</span></Link>
+          <Link style={styles.loginButton} onClick={this.backToMain}><span style={styles.title}>Bookravel</span></Link>
           {content}
         </div>
     )    
