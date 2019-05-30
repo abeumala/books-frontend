@@ -115,6 +115,18 @@ export class SecurityActions {
     }
   }
 
+  // getCommentsForUser(url) {
+  // 	return (dispatch) => {
+  //     Fetcher.fetch(url)
+  //     .then((response)=>{
+  //       dispatch(response);
+  //     })
+  //     .catch((e)=>{
+  //       console.log('Response Error', e);
+  //     });
+  //   }
+  // }
+
   deleteUser(url) {
     let object = {  
       method: 'DELETE',

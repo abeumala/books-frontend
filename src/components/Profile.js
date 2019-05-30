@@ -74,6 +74,8 @@ export default class Signup extends Component {
     
     if (SecurityStore.state.me) {
     	SecurityActions.updateProfile(API.getProfileURL(SecurityStore.state.me._id), obj)
+      // SecurityActions.getCommentsForUser(API.getUSerCommentsURL(SecurityStore.state.me_id), object)
+      
     }	
     else browserHistory.push('/signup')
   }

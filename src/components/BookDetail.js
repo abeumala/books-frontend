@@ -134,7 +134,7 @@ export default class BookDetail extends Component {
               </textarea>  
             </div>
             <div style={{marginBottom: 25}}>
-              <button className='link' style={styles.loginButton} onClick={this.addComment}> Send </button>
+              <button className='link' style={styles.updateButton} onClick={this.addComment}> Send </button>
             </div>
           </div> 
         </div>  
@@ -160,6 +160,16 @@ const styles = {
     flexDirection: 'column',
     border: '1px solid black',
   },
+
+  updateButton: {
+  height: 30,
+  width: 190,
+  borderRadius: `20px`,
+  "background": `#2a2c39`,
+  "color": "white",
+  letterSpacing: 2.5
+  // boxShadow: `2px 2px #888888`
+},
 
   input: {
     width: 550,

@@ -74,7 +74,8 @@ const styles = {
     margin: "0 auto",
     maxWidth: 500, 
     padding: 16,
-    borderRadius: 18
+    borderRadius: 18,
+    fontSize: 13
   },
     titleContent: {
     background: `#e5c572`,
@@ -82,7 +83,8 @@ const styles = {
     minWidth: 70,
     maxWidth: 500, 
     padding: 16,
-    borderRadius: 18
+    borderRadius: 18,
+    fontSize: 18
   },
   buttonOne: {
     marginRight: 7,
