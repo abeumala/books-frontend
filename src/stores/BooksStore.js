@@ -9,6 +9,7 @@ export class BooksStore {
   	this.books = [];
   	this.book = null;
   	this.comments = [];
+		this.hello = true;
 
     this.bindListeners({
     	handleGetBooks: BooksActions.GET_BOOKS,

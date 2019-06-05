@@ -18,7 +18,8 @@ export default class Main extends Component {
     super();
 
     this.state = {
-      books: []
+      books: [],
+      hello: null
     }
     
     this.onBooksStoreChange = this.onBooksStoreChange.bind(this);
@@ -46,8 +47,12 @@ export default class Main extends Component {
     BooksStore.unlisten(this.onBooksStoreChange);
   }
 
-  onBooksStoreChange(state) { //state is referring to BooksStore.state
-    this.setState({books: state.books})
+  onBooksStoreChange(state) { //state is referring to BooksStore.state, gets the state from BooksStore and sets Main.js state
+    console.log(state);
+    console.log('before', this.state)
+    this.setState({books: state.books, hello: state.hello})
+
+    console.log('after', this.state)
   }
 
   render() {
