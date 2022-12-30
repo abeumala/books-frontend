@@ -10,11 +10,11 @@
     "react-dom": "^15.6.2",
     "react-router": "^2.6.0",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "0.9.5",
+    "react-scripts": "5.0.1",
     "universal-cookie": "^4.0.0"
   },
   "devDependencies": {
-    "webpack-cli": "^3.3.2"
+    "webpack-cli": "^5.0.1"
   },
   "scripts": {
     "build-dev": "dotenv -e .env.development react-scripts build",
